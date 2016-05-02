@@ -13,15 +13,14 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Download Oracle JDK
-ENV ORACLE_JDK_VERSION jdk-8u66
-ENV ORACLE_JDK_URL     http://download.oracle.com/otn-pub/java/jdk/8u66-b17/jdk-8u66-linux-x64.tar.gz
+ENV ORACLE_JDK_VERSION jdk-8u92
+ENV ORACLE_JDK_URL     http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
 RUN mkdir -p /opt/jdk/$ORACLE_JDK_VERSION && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie" -O /opt/jdk/$ORACLE_JDK_VERSION/$ORACLE_JDK_VERSION.tar.gz $ORACLE_JDK_URL && \
     tar -zxf /opt/jdk/$ORACLE_JDK_VERSION/$ORACLE_JDK_VERSION.tar.gz --strip-components=1 -C /opt/jdk/$ORACLE_JDK_VERSION && \
     rm /opt/jdk/$ORACLE_JDK_VERSION/$ORACLE_JDK_VERSION.tar.gz && \
     update-alternatives --install /usr/bin/java java /opt/jdk/$ORACLE_JDK_VERSION/bin/java 100 && \
     update-alternatives --install /usr/bin/javac javac /opt/jdk/$ORACLE_JDK_VERSION/bin/javac 100
-
 
 ENV DOWNLOAD_URL        https://downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-
 
@@ -72,10 +71,10 @@ RUN \
     rm -rf ${BITBUCKET_INSTALL_DIR}/jaf-1.1.1 ${BITBUCKET_INSTALL_DIR}/jaf-1_1_1.zip && \
     wget -O ${BITBUCKET_INSTALL_DIR}/mail-1.5.4.jar http://java.net/projects/javamail/downloads/download/javax.mail.jar && \
     mv ${BITBUCKET_INSTALL_DIR}/mail-1.5.4.jar ${BITBUCKET_INSTALL_DIR}/lib/ && \
-    wget -O ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.37.tar.gz http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.37.tar.gz && \
-    tar xzf ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.37.tar.gz -C ${BITBUCKET_INSTALL_DIR} && \
-    mv ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.37/mysql-connector-java-5.1.37-bin.jar ${BITBUCKET_INSTALL_DIR}/lib/ && \
-    rm -rf ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.37.tar.gz ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.37 && \
+    wget -O ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.38.tar.gz http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.38.tar.gz && \
+    tar xzf ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.38.tar.gz -C ${BITBUCKET_INSTALL_DIR} && \
+    mv ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar ${BITBUCKET_INSTALL_DIR}/lib/ && \
+    rm -rf ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.38.tar.gz ${BITBUCKET_INSTALL_DIR}/mysql-connector-java-5.1.38 && \
     rm -f ${BITBUCKET_INSTALL_DIR}/atlassian-bitbucket/WEB-INF/lib/{activation,mail}-*.jar
 
 

@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-box      = 'debian/jessie64'
+box      = 'ubuntu/wily64'
 
 # VM configuration
 vm_hostname = 'docker-atlassian-bitbucket'
